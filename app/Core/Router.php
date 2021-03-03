@@ -54,7 +54,7 @@ class Router
         
         $controller = $page_data['controller'];
         $method = $page_data['method'];
-        $page_data['clean_path'] = ('/' . implode('/', $clean_path));
+        $page_data['clean_path'] = ((empty($clean_path) ? '' : '/') . implode('/', $clean_path));
         $page_data['current_path'] = $target_path;
         $page_data['url'] = $this->url($target_path);
         $page_data['host'] = $this->url();
