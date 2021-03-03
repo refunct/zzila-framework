@@ -1,0 +1,33 @@
+Options All -ExecCGI -Indexes -Includes +FollowSymLinks
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !/index\.php$
+RewriteRule ^(.*)$ /index.php [L]
+
+<IfModule mod_dir.c>
+    DirectoryIndex index.php
+</IfModule>
+
+<ifModule mod_php.c>
+    php_value	upload_max_filesize	8M
+    php_value	post_max_size		2M
+    php_value	default_charset utf-8
+    php_value	max_execution_time 30
+</ifModule>
+
+<IfModule mod_expires.c>
+    AddType application/x-font-ttf .ttf
+    ExpiresActive on
+    ExpiresByType application/x-font-ttf "access plus 1 year"
+    ExpiresByType font/ttf      "access plus 1 month"
+    ExpiresByType font/woff     "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\\.(ttf)$">
+        Header set Cache-Control "max-age=2592000, public"
+    </FilesMatch>
+</IfModule>

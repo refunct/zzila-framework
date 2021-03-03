@@ -1,0 +1,16 @@
+{
+    "name": "refunct/zzila-framework",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Refunct"
+        }
+    ],
+    "require": {
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\" : "app"
+        }
+    }
+}

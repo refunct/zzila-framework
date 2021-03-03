@@ -1,0 +1,68 @@
+version: '3.8'
+
+networks:
+    internal:
+
+services:
+    server:
+        build:
+          context: ./docker
+          dockerfile: Dockerfile
+        container_name: server
+        volumes:
+          - ./public:/var/www/${SITE_NAME}/public
+          - ./app:/var/www/${SITE_NAME}/app
+          - ./vendor:/var/www/${SITE_NAME}/vendor
+          - ./:/var/www/${SITE_NAME}
+          - ./docker/apache/sites-available:/etc/apache2/sites-available
+        restart: always
+        environment:
+          SITE_NAME: ${SITE_NAME}
+          SITE_TYPE: ${SITE_TYPE}
+        depends_on:
+          - mysql
+        ports:
+          - 80:80
+          - 443:443
+        networks:
+          net:
+            ipv4_address: 192.162.201.2
+            ipv6_address: 2001:3984:3989::20
+    mysql:
+        image: mysql:latest
+        container_name: mysql
+        restart: unless-stopped
+        command: --default-authentication-plugin=mysql_native_password
+        command: --innodb_use_native_aio=0
+        ports:
+          - "3306:3306"
+        volumes:
+          - ./docker/data/mysql:/var/lib/mysql
+        environment:
+          MYSQL_ROOT_PASSWORD: secret
+        networks:
+          net:
+            ipv4_address: 192.162.201.3
+            ipv6_address: 2001:3984:3989::30
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin:latest
+        restart: always
+        links:
+         - mysql
+        ports:
+         - 8080:80
+        environment:
+          PMA_HOST: mysql
+          PMA_USER: root
+          PMA_PASSWORD: secret
+        networks:
+          net:
+            ipv4_address: 192.162.201.4
+            ipv6_address: 2001:3984:3989::40
+networks:
+  net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: "192.162.201.0/24"
+        - subnet: "2001:3984:3989::/64"
