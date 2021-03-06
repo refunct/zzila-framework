@@ -3,12 +3,12 @@
 namespace App\Controllers;
 
 use App\Core\Config as Config;
+use App\Libraries\MysqlPdo as Db;
 
 class StartController extends Controller
 {
     public function index()
     {
-        $db_config = Config::get('db');
         
         $data = array();
         $data['styles'][] = $data['preload']['styles'][] = array(
@@ -36,7 +36,18 @@ class StartController extends Controller
             'addit' => 'crossorigin="anonymous"'
         );
         
-        //$this->db->connect($db_config);
+        /*
+            Работа с бпзой данных
+
+            $db_config = Config::get('db');
+            $this->db->connect($db_config);
+            $this->db->sql('SELECT * FROM `table`', array(), Db::RETURN_SELECT);
+            
+            Db::RETURN_SELECT - возвращает fetchAll()
+            Db::RETURN_FETCH_COLUMN - возвращает fetchColumn()
+            Db::RETURN_INSERT - возвращает $pdo->lastInsertId()
+            Db::RETURN_UPDATE - возвращает rowCount()
+         */
 
         $this->viewer->setData($data);
         $this->viewer->renderHtml();
