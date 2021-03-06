@@ -24,16 +24,12 @@ class Router
      */
     public function routing(): void
     {
-        $config_routes = Config::get('routes');
-        $config_langs = Config::get('langs');
-        $config_app = Config::get('app');
-
         $clean_path = $this->getCleanPath();
-        $user_lang = $this->getLang($config_langs);
+        $user_lang = $this->getLang(Config::get('langs'));
         $target_path = '';
 
-        if (!empty($config_app['multilingual']) && $config_app['multilingual'] == 'on') {
-            if (!empty($clean_path[0]) && array_key_exists($clean_path[0], $config_langs['list'])) {
+        if (Config::get('app', 'multilingual') == 'on') {
+            if (!empty($clean_path[0]) && array_key_exists($clean_path[0], Config::get('langs', 'list'))) {
                 $user_lang = $clean_path[0];
                 array_shift($clean_path);
             }
@@ -42,7 +38,7 @@ class Router
             $target_path .= '/' . implode('/', $clean_path);
         }
 
-        $page_data = $this->searchPath($config_routes['list'], $clean_path);
+        $page_data = $this->searchPath($clean_path);
 
         if (empty($page_data)) {
             Header::setHttpCode(404);
@@ -132,8 +128,9 @@ class Router
      *  
      * @return array 
      */
-    private function searchPath(array $routes, array $current_path): array
+    private function searchPath(array $current_path): array
     {
+        $routes = Config::get('routes', 'list');
         $current = ('/' . implode('/', $current_path));
         $result = array();
         foreach ($routes as $route) {

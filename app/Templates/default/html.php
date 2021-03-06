@@ -11,17 +11,17 @@
     <meta name="twitter:title" content="<?= $this->t($this->getPageData('name') . '_title'); ?>">
     <meta name="twitter:description" content="<?= $this->t($this->getPageData('name') . '_description'); ?>">
     <meta name="twitter:image" content="<?= $this->getPageData('host'); ?>/images/<?= $this->getPageData('template'); ?>/images/default/icon/favicon-194x194.png">
-    <meta name="twitter:site" content="<?= $this->getConfig('app')['site_name']; ?>">
+    <meta name="twitter:site" content="<?= $this->getConfig('app', 'site_name'); ?>">
     <meta property="og:title" content="<?= $this->t($this->getPageData('name') . '_title'); ?>">
     <meta property="og:description" content="<?= $this->t($this->getPageData('name') . '_description'); ?>">
     <meta property="og:image" content="<?= $this->getPageData('host') ?>/images/<?= $this->getPageData('template'); ?>/images/default/icon/favicon-194x194.png">
     <meta property="og:url" content="<?= $this->getPageData('url'); ?>">
     <meta property="og:locale" content="<?= $this->getPageData('lang'); ?>">
-    <meta property="og:site_name" content="<?= $this->getConfig('app')['site_name']; ?>" />
-    <link rel="alternate" hreflang="x-default" href="<?= $this->getConfig('langs')['default']; ?>">
+    <meta property="og:site_name" content="<?= $this->getConfig('app', 'site_name'); ?>" />
+    <link rel="alternate" hreflang="x-default" href="<?= $this->getConfig('langs', 'default'); ?>">
     <?php
-    if ($this->getConfig('app')['multilingual'] == 'on') {
-        foreach ($this->getConfig('langs')['list'] as $lang) {
+    if ($this->getConfig('app', 'multilingual') == 'on') {
+        foreach ($this->getConfig('langs', 'list') as $lang) {
             echo '<link rel="alternate" hreflang="' . $lang['iso'] . '" href="' . $this->link($this->getPageData('clean_path'), $lang['iso']) . '">';
         }
     }

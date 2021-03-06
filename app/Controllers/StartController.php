@@ -42,7 +42,7 @@ class StartController extends Controller
             $db_config = Config::get('db');
             $this->db->connect($db_config);
             $this->db->sql('SELECT * FROM `table`', array(), Db::RETURN_SELECT);
-            
+
             Db::RETURN_SELECT - возвращает fetchAll()
             Db::RETURN_FETCH_COLUMN - возвращает fetchColumn()
             Db::RETURN_INSERT - возвращает $pdo->lastInsertId()

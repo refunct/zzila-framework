@@ -19,7 +19,9 @@ class Viewer
     {
         $this->page_data = &$page_data;
         $this->template = $page_data['template'];
-        $this->translator = new Translator($page_data['lang']);
+        if (Config::get('app', 'multilingual') == 'on') {
+            $this->translator = new Translator($page_data['lang']);
+        }
     }
 
     /**
@@ -145,7 +147,11 @@ class Viewer
      */
     public function t(string $name): string
     {
-        return $this->translator->getTranslate($name);
+        if (!empty($this->translator)) {
+            return $this->translator->getTranslate($name);
+        } else {
+            return '';
+        }
     }
 
     /**
@@ -166,7 +172,7 @@ class Viewer
             $lang = $target_lang;
         }
 
-        if (Config::get('app')['multilingual'] == 'on') {
+        if (Config::get('app', 'multilingual') == 'on') {
             $url .= '/' . $lang;
         }
         return $url . $path;
@@ -191,8 +197,8 @@ class Viewer
      * 
      * @return mixed 
      */
-    public function getConfig(string $config_name): mixed
+    public function getConfig(string $config_name, string $key = ''): mixed
     {
-        return Config::get($config_name);
+        return Config::get($config_name, $key);
     }
 }

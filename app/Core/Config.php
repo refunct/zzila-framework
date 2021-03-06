@@ -11,9 +11,9 @@ class Config
      *
      * @param string $name Название конфигурации
      * 
-     * @return array 
+     * @return mixed 
      */
-    public static function get(string $name): array
+    public static function get(string $name, string $key = ''): mixed
     {
         if (!isset(self::$configs[$name])) {
             if (file_exists(CONFIGS_PATH . '/' . $name . '.php')) {
@@ -23,6 +23,10 @@ class Config
             }
         }
 
-        return self::$configs[$name];
+        if (empty($key)) {
+            return self::$configs[$name];
+        } else {
+            return self::$configs[$name][$key] ?? '';
+        }
     }
 }
