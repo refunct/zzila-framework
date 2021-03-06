@@ -35,13 +35,20 @@ class StartController extends Controller
             'type' => 'font/ttf',
             'addit' => 'crossorigin="anonymous"'
         );
+
+        /*
+            Работа с моделями
+
+            $user = new \App\Models\User;
+            print_r($user->getInfo());
+        */
         
         /*
-            Работа с бпзой данных
+            Работа с базой данных
 
             $db_config = Config::get('db');
             $this->db->connect($db_config);
-            $this->db->sql('SELECT * FROM `table`', array(), Db::RETURN_SELECT);
+            $this->db->sql('SELECT * FROM `table` WHERE `id` = :id', array(':id' => 1), Db::RETURN_SELECT);
 
             Db::RETURN_SELECT - возвращает fetchAll()
             Db::RETURN_FETCH_COLUMN - возвращает fetchColumn()
