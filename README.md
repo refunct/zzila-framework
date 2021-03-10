@@ -67,7 +67,7 @@
 
     > port: 8080
 
-### 7. Установить на удаленный сервер
+### 5. Установить на удаленный сервер
 1. Установите фреймворк (п 2.1)
 2. Создайте репозиторий на GitHub
 3. Выполните команды 
@@ -89,7 +89,7 @@
     > git clone https://github.com/{ВАШ ЛОГИН}/{ИМЯ ВАШЕГО РЕПОЗИТОРИЯ}.git .
     
     > git pull
-### 8. Ошибки
+### 6. Ошибки
 1. При запуске докера появляется ошибка
     
     > ERROR: Pool overlaps with other one on this address space
@@ -97,7 +97,7 @@
     Очистите сети командой
     
     > docker network prune
-### 9. Ссылки
+### 7. Ссылки
 * [Официальный сайт](https://zzila.com/ "zzila.com")
 * [Документация](https://zzila.com/docs "Документация")
 * [YouTube канал](https://www.youtube.com/channel/UC3Q_N1wUw1suldnpFJgQzUQ "YouTube refunct")
