@@ -5,19 +5,19 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta http-equiv="content-Type" content="<?= $this->getPageData('mime'); ?>; charset=<?= $this->getPageData('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="<?= $this->t($this->getPageData('name') . '_description'); ?>">
-    <meta name="keywords" content="<?= $this->t($this->getPageData('name') . '_keywords'); ?>">
+    <meta name="description" content="<?= $this->getDescription(); ?>">
+    <meta name="keywords" content="<?= $this->getKeywords() ?>">
     <meta name="robots" content="<?= $this->getPageData('robot'); ?>">
-    <meta name="twitter:title" content="<?= $this->t($this->getPageData('name') . '_title'); ?>">
-    <meta name="twitter:description" content="<?= $this->t($this->getPageData('name') . '_description'); ?>">
-    <meta name="twitter:image" content="<?= $this->getPageData('host'); ?>/images/<?= $this->getPageData('template'); ?>/images/default/icon/favicon-194x194.png">
+    <meta name="twitter:title" content="<?= $this->getTitle(); ?>">
+    <meta name="twitter:description" content="<?= $this->getDescription(); ?>">
+    <meta name="twitter:image" content="<?= $this->getImage(); ?>">
     <meta name="twitter:site" content="<?= $this->getConfig('app', 'site_name'); ?>">
-    <meta property="og:title" content="<?= $this->t($this->getPageData('name') . '_title'); ?>">
-    <meta property="og:description" content="<?= $this->t($this->getPageData('name') . '_description'); ?>">
-    <meta property="og:image" content="<?= $this->getPageData('host') ?>/images/<?= $this->getPageData('template'); ?>/images/default/icon/favicon-194x194.png">
+    <meta property="og:title" content="<?= $this->getTitle(); ?>">
+    <meta property="og:description" content="<?= $this->getDescription(); ?>">
+    <meta property="og:image" content="<?= $this->getImage(); ?>">
     <meta property="og:url" content="<?= $this->getPageData('url'); ?>">
     <meta property="og:locale" content="<?= $this->getPageData('lang'); ?>">
-    <meta property="og:site_name" content="<?= $this->getConfig('app', 'site_name'); ?>" />
+    <meta property="og:site_name" content="<?= $this->getConfig('app', 'site_name'); ?>">
     <link rel="alternate" hreflang="x-default" href="<?= $this->getConfig('langs', 'default'); ?>">
     <?php
     if ($this->getConfig('app', 'multilingual') == 'on') {
@@ -64,10 +64,10 @@
     <meta name="msapplication-config" content="/images/default/icon/browserconfig.xml">
     <meta name="theme-color" content="#424242">
     <!-- end icons -->
-    <title><?= $this->t($this->getPageData('name') . '_title'); ?></title>
+    <title><?= $this->getTitle(); ?></title>
 </head>
 
-<body>
+<body id="transition_disabled">
 
     <!--[if lt IE 9]>
         <script>

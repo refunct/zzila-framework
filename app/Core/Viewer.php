@@ -14,6 +14,7 @@ class Viewer
     private $template;
     private $data = array();
     private $page_data = array();
+    private $page_settings = array('title' => '', 'description' => '', 'image' => '', 'keywords' => '');
 
     public function __construct(array &$page_data)
     {
@@ -22,6 +23,44 @@ class Viewer
         if (Config::get('app', 'multilingual') == 'on') {
             $this->translator = new Translator($page_data['lang']);
         }
+        $this->setTitle($this->t($this->getPageData('name') . '_title'));
+        $this->setDescription($this->t($this->getPageData('name') . '_description'));
+        $this->setImage('/images/' . $this->getPageData('template') . '/icon/favicon-194x194.png');
+        $this->setKeywords($this->t($this->getPageData('name') . '_keywords'));
+    }
+
+    public function setTitle(string $title): void
+    {
+        $this->page_settings['title'] = $title;
+    }
+    public function setDescription(string $description): void
+    {
+        $this->page_settings['description'] = $description;
+    }
+    public function setImage(string $image, bool $set_host = true): void
+    {
+        $this->page_settings['image'] = ($set_host ? $this->getPageData('host') : '') . $image;
+    }
+    public function setKeywords(string $keywords): void
+    {
+        $this->page_settings['keywords'] = $keywords;
+    }
+
+    public function getTitle(): string
+    {
+        return $this->page_settings['title'];
+    }
+    public function getDescription(): string
+    {
+        return $this->page_settings['description'];
+    }
+    public function getImage(): string
+    {
+        return $this->page_settings['image'];
+    }
+    public function getKeywords(): string
+    {
+        return $this->page_settings['keywords'];
     }
 
     /**
@@ -33,7 +72,7 @@ class Viewer
      * 
      * @return void 
      */
-    public static function debug(mixed &$data): void
+    public static function debug(mixed $data): void
     {
         if (SITE_TYPE !== 'production') {
             echo '<pre style="background: #ffffff; color: #000000; font-size: 12px;">' . print_r($data, true) . '</pre>';
@@ -49,7 +88,7 @@ class Viewer
      * 
      * @return void 
      */
-    public static function dump(mixed &$data): void
+    public static function dump(mixed $data): void
     {
         if (SITE_TYPE !== 'production') {
             var_dump($data);

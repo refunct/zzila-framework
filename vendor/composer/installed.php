@@ -1,24 +1,24 @@
 <?php return array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => 'dev-main',
+    'version' => 'dev-main',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
-    'name' => 'refunct/zzila-engine',
+    'reference' => '713176c05b27f6631ac4c979840213d588734410',
+    'name' => 'refunct/zzila-framework',
   ),
   'versions' => 
   array (
-    'refunct/zzila-engine' => 
+    'refunct/zzila-framework' => 
     array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => 'dev-main',
+      'version' => 'dev-main',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => '713176c05b27f6631ac4c979840213d588734410',
     ),
   ),
 );
