@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta http-equiv="content-Type" content="<?= $this->getPageData('mime'); ?>; charset=<?= $this->getPageData('charset'); ?>">
+    <meta http-equiv="content-Type" content="<?= $this->getPageData('mime'); ?>; charset=<?= $this->getConfig('app', 'charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<?= $this->getDescription(); ?>">
     <meta name="keywords" content="<?= $this->getKeywords() ?>">
