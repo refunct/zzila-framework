@@ -99,7 +99,7 @@
     > docker network prune
 ### 7. Ссылки
 * [Официальный сайт](https://zzila.com/ "zzila.com")
-* [Документация](https://zzila.com/docs "Документация")
+* [Документация](https://zzila.com/work/framework "Документация")
 * [YouTube канал](https://www.youtube.com/channel/UC3Q_N1wUw1suldnpFJgQzUQ "YouTube refunct")
-* [Telegram канал](https://t.me/refunct_blog "Telegram refunct_blog")
-* [Поддержать](https://www.donationalerts.com/r/refunct "Поддержать")
+* [Telegram канал](https://zzila.com/telegram-channel "Telegram refunct_blog")
+* [Поддержать](https://zzila.com/support "Поддержать")
