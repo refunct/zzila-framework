@@ -51,7 +51,7 @@ div.clear {
     clear: both;
 }
 
-.transition_disabled {
+#transition_disabled {
     -webkit-transition: none !important;
     -moz-transition: none !important;
     -ms-transition: none !important;
@@ -198,4 +198,21 @@ a.sp_link_lang {
 }
 a.sp_link_lang:hover {
     text-decoration: underline;
+}
+
+footer.main_footer_wrap {
+    width: 100%;
+    min-height: 20px;
+    margin: 45px 0px 0px 0px;
+    padding: 10px 0px 45px 0px;
+    text-align: center;
+}
+
+a.main_footer_link {
+    display: inline-block;
+    margin: 3px 8px 3px 8px;
+    padding: 3px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: 0.3s color;
 }
