@@ -97,9 +97,3 @@
     Очистите сети командой
     
     > docker network prune
-### 7. Ссылки
-* [Официальный сайт](https://zzila.com/ "zzila.com")
-* [Документация](https://zzila.com/work/framework "Документация")
-* [YouTube канал](https://www.youtube.com/channel/UC3Q_N1wUw1suldnpFJgQzUQ "YouTube refunct")
-* [Telegram канал](https://zzila.com/telegram-channel "Telegram refunct_blog")
-* [Поддержать](https://zzila.com/support "Поддержать")
